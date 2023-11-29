@@ -17,6 +17,7 @@ let package = Package(
             targets: ["aesctr-for-swift-ssh-nio"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/iosdevzone/IDZSwiftCommonCrypto", .upToNextMajor(from: "0.16.1")),
         .package(url: "https://github.com/apple/swift-nio-ssh.git", from: "0.8.0"),
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.56.0"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
@@ -25,6 +26,7 @@ let package = Package(
         .executableTarget(
             name: "NIOSSHClient",
             dependencies: [
+                .product(name: "IDZSwiftCommonCrypto", package: "IDZSwiftCommonCrypto"),
                 .product(name: "NIOSSH", package: "swift-nio-ssh"),
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
